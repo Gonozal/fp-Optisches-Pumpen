@@ -1,0 +1,226 @@
+% Klassifiziert den Dokumenten-Typ
+% Doku: http://exp1.fkp.physik.tu-darmstadt.de/tuddesign/
+% Farben: http://www.tu-darmstadt.de/media/medien_stabsstelle_km/services/medien_cd/das_bild_der_tu_darmstadt.pdf
+%  bigchapter: Chapter haben doppelte Schriftgröße
+%  linedtoc: Linien im Inhaltsverzeichnis wie bei Überschriften
+%  colorbacktitle: Der Dokumenten-Titel wird mir der Accentfarbe hinterlegt
+\documentclass[bigchapter,colorback,accentcolor=tud4b,linedtoc,11pt]{tudreport}
+
+% Input Dokument hat das Encoding UTF-8
+\usepackage[utf8]{inputenc}
+% Wichtiges Paket für Links und verlinktes Inhaltsverzeichnis
+\usepackage[ngerman]{hyperref}
+% Paket für Fußnoten
+\usepackage[stable]{footmisc}
+\usepackage{multirow}
+\usepackage{colortbl}
+% Alternatives package für bilder
+\usepackage{wrapfig}
+% Paket für amsmath (aligned mathe formeln)
+\usepackage{amsmath}
+% Farbige tabellen
+\usepackage{colortbl}
+ 
+% Paket für Bibliotheks-Verzeichnis, square: Verwende eckige statt runde klammern
+% \usepackage[square]{natbib}
+% Paket zum Plotten von Datensätzen
+\usepackage{pgfplots}
+\pgfkeys{%
+  /pgfplots/seperators/.style={%
+    /pgf/number format/use comma
+  },
+  /pgfplots/default/.style={%
+    /pgf/number format/use comma,
+    legend pos=north west,
+    x tick label style={/pgf/number format/1000 sep=},
+    y tick label style={/pgf/number format/1000 sep=},
+    width=0.9\linewidth,
+    height=0.40\linewidth,
+    scale only axis,
+    tick align=outside,
+    tickpos=left,
+    grid=both,
+    tick align=outside,
+    minor x tick num=3,
+    minor y tick num=4,
+    minor grid style={dotted,thin}
+  }
+}
+
+% Anhänge für Original-Messdaten
+\usepackage{fancyvrb}
+
+% Verwende deutsche Bezeichner für Inhaltsverzeichnis, ... (ngerman = New German: neue Rechtschreibung)
+\usepackage{ngerman}
+% Deutsche Zahlen (entfernt z.B. das Leerzeichen nach einem Dezimal-Komma)
+\usepackage{ziffer} 
+
+\usepackage[verbose]{placeins}
+
+%wegen Grafikverschiebung hinzugefügt
+\usepackage{float}
+
+%\usepackage{graphicx}
+%\usepackage{caption}
+\usepackage{subcaption} %Für subfigures
+
+% PDF-Optionen
+\hypersetup{%
+  pdftitle={TU Darmstadt \- Physikalisches Praktikum für Fortgeschrittene},
+  pdfauthor={Esra Bauer, Sören Link},
+  pdfsubject={Versuch 4.11},
+  pdfview=FitH,
+}
+% Nummeriere formeln in Subsections einzeln
+% Kleines makro zur assymetrischen Fehlerangabe
+
+% Entspricht-Zeichen
+\usepackage{scalerel}
+
+\newcommand\equalhat{%
+\let\savearraystretch\arraystretch
+\renewcommand\arraystretch{0.3}
+\begin{array}{c}
+\stretchto{
+    \scalerel*[\widthof{=}]{\wedge}
+    {\rule{1ex}{3ex}}%
+}{0.5ex}\\ 
+=%
+\end{array}
+\let\arraystretch\savearraystretch
+}
+%BEGINN TITELSEITE
+
+\title{Optisches Pumpen}
+
+\subtitle{Esra Bauer  \\Sören Link}
+
+\subsubtitle{Tutor: Simon Mieth \hfill 29.6.2015}
+
+\author{Esra Bauer, Sören Link}
+
+%\settitlepicture{img/title.jpg}
+
+\institution{Physikalisches Praktikum \\für Fortgeschrittene \\ Versuch 4.11}
+
+\date{\today}
+%ENDE TITELSEITE
+
+
+\begin{document}
+%ANFANG DOKUMENT
+
+%Titelseite einfügen
+\maketitle
+
+%Inhaltsverzeichnis einfügen
+\tableofcontents
+
+%ANFANG INHALT
+\chapter{Einleitung}
+
+In diesem Versuch geht es um optisches Pumpen, d.h. Erzeugung einer von der thermischen Besetzungsverteilung (Boltzmann-Verteilung) abweichenden Verteilung an Rubidiumatomen, womit man beispielsweise die sehr feine Zeeman-Aufspaltung der Hyperfeinstrukturniveaus spektroskopieren kann. Wir bestrahlen dazu Rubidiumdampf in einem Glaskolben mit einer Rubidiumlampe. Unter anderem wird auch der Kernspin von Rubidium $^{87}$Rb und $^{85}$Rb ermittelt.
+
+\chapter{Grundlagen}
+
+\section{Optisches Pumpen}
+
+Wir können den Rubidiumdampf als kanonisches Ensemble betrachten, d.h. als System, welches an ein Wärmebad der Temperatur T gekoppelt ist. Die Besetzungsverteilung ist dann von T abhängig und durch die Boltzmann-Statistik gegeben. Für die Zahl $N_j$ der Teilchen, die den Zustand j besetzen, gilt demnach:
+$$N_j = N_0 \cdot g_j \cdot e^{- \beta E_j},$$
+wobei $\beta = \frac{1}{k_B T}$ die Energienormierung bezeichnet und $g_j$ den Entartungsgrad der Energie $E_j$, also die Anzahl der Zustände gleicher Energie $E_j$.
+
+Optisches Pumpen heißt, eine von dieser Statistik abweichende Besetzungsverteilung zu erzeugen. Um dies zu veranschaulichen, betrachten wir ein Energiesystem, das aus drei Niveaus besteht. C sei das höchste Niveau, B das mittlere und A das untere. Von den beiden Grundniveaus A und B seien optischen Übergänge zu C möglich, nicht aber zwischen A und B. Zu Beginn sind nun A und B gleichbesetzt, der Polarisationsgrad ist also: $P := \frac{N_B-N_A}{N_B+N_A} = \frac{N_B-N_A}{N} = 0$.
+
+Nun wird derartiges Licht eingestrahlt, dass nur der Übergang von A nach C induziert wird, von C können Übergänge nach A oder B stattfinden, jedoch nicht von B nach C. Dies bedeutet, immer mehr Teilchen besetzen das Niveau B und immer weniger das Niveau A, da sie von dort kontunierlich nach C gepumpt werden. Dem entgegen wirkt die sogenannte Relaxation, d.h. der Übergang von B nach A. Hier sind zwar keine optischen Übergange möglich, jedoch können Teilchen durch magnetische Dipolübergänge oder durch Stöße dennoch von B nach A übergehen. Man definiert daher die Relaxationsrate wie folgt: 
+$$\frac{d n}{d t} \propto \frac{n}{T_1},~ n := N_B-N_A$$
+mit der Relaxationszeit $T_1$. Es lässt sich sinnvollerweise auch eine Pumpzeit finden. Diese ist abhängig von der Intensität und von $N_A$. Für die Zunahme der Besetzung $N_B$ von B gilt:
+$$d N_B = - d N_A = -K \cdot I \cdot N_A \cdot d t,$$
+wobei K eine Proportionalitätskonstante ist. Daraus ergibt sich:
+$$d n = d (N_B-N_A) \propto -K \cdot I \cdot (N-n) \cdot d t,~ N_A = \frac{1}{2} (N-n).$$ 
+Die Pumpzeit ist damit $T_P = \frac{1}{K \cdot I}$ und $\frac{d n}{d t} \propto \frac{N-n}{T_P}$.
+
+Pumpen und Relaxation erfolgt gleichzeit, wir finden also folgende Differentialgleichung:
+$$\frac{d n}{d t} = \frac{N-n}{T_P} - \frac{n}{T_1}$$
+und nach kurzer Zeit stellt sich ein Gleichgewicht ein, so dass gelten muss $\frac{d n}{d t} = 0$, woraus folgt: $n_0 = \frac{N}{1+\frac{T_P}{T_1}}$. Um die DGL zu lösen, setze $\frac{1}{\tau} = \frac{1}{T_P} + \frac{1}{T_1}$. Man erhält folgende Lösungen für $n$ und $N_A$:
+$$n = n_0 (1-e^{-\frac{t}{\tau}}),~~~ N_A = \frac{1}{2} (N-n_0 (1-e^{\frac{t}{\tau}})).$$
+
+Beim Rubidiumdampf lässt sich der Erfolg des optischen Pumpens (d.h. der Pumpvorgang muss gegenüber der Relaxation überwiegen) an der Transparenz erkennen. Da das Pumplicht nur den Übergang von A nach C induziert, wird dieses Licht zu Anfang stark absorbiert, da noch viele Teilchen im Niveau A befindlich sind und beim Übergang nach C jeweils Licht absorbieren. Je weniger Teilchen sich in A aufhalten, d.h. je stärker der Pumpvorgang fortschreitet, desto weniger Licht wird also absorbiert, wodurch die Transparenz des Rubidiumdampfes sinkt. 
+
+\section{Energieniveaustruktur von Rubidium}
+
+\section{Spektroskopie der Zeeman-Niveaus nach optischem Pumpen}
+
+\section{Bestimmung des Kernspins}
+
+\chapter{Aufbau und Durchführung}
+
+%\begin{figure}[H] 
+ % \centering
+  %   \includegraphics[width=0.8\textwidth]{img/aufbau.png}
+   %  \caption{Experimental setup. As source material we used $^{22}Na$ and
+    %   $^{137}Cs$. In addition we mounted plates of aluminium, cadmium, iron and
+     %lead behind the source to measure the backscatter radiation. Finally we have
+  %   also measured the background radiation without a radiactive source \cite{Anleitung}.}
+ % \label{fig:aufbau}
+%\end{figure}
+
+\chapter{Auswertung}
+
+\section{Analysis of the spectrum of $^{137}Cs$}
+
+
+\section{Fit Values}
+
+%\begin{center}
+ % \begin{tabular}{r|r|r|r|r|r|r}
+  %   Type of peak & $k$     & $\Delta k$ & $\mu$   & $\Delta \mu$ & $\sigma$ & $\Delta \sigma$ \\ \hline
+   %  X-ray        & $17066$ & $597$      & $90,7$  & $0,14$       & $3,69$   & $0,16$          \\ \hline
+    % Gamma        & $87052$ & $1285$     & $232,4$ & $0,11$       & $7,21$   & $0,14$          \\
+%	\end{tabular}
+%\end{center}
+
+\section{Energy spectrum}
+
+\section{Background Radiation}
+
+%\begin{center}
+%\begin{figure}[H]
+%\begin{tikzpicture}
+%\begin{axis}[
+%    title={Background Radiation},
+%    xlabel=channel,
+%   ylabel=counts,
+%    height=0.7\textwidth,
+%    ymin=0,
+%    xmin=0,
+%    xmax=300,
+%    default
+%]
+%\addplot[red, only marks, mark=x, mark size=1pt] table[x index=0, y index=1] {data/background.txt};
+%\addlegendentry{Background}
+%\end{axis}
+%\end{tikzpicture}
+%\captionof{figure}{}
+%\end{figure}
+%\end{center}
+
+\chapter{Fazit}
+
+%ENDE INHALT
+\cleardoublepage{}
+% Eintrag fürs Inhaltsverzeichnis
+\newpage
+\begin{thebibliography}{100}
+  \bibitem{Anleitung} {Experimental Instructions} \bibitem{na22decay} {Semibyte, homepage of physics lab assistent and qualified
+      computer scientist Tobias Krähling:
+      \url{http://www.semibyte.de/wp/download/graphicslib/physics/termschema_na22.png}
+    [CC BY-NC-SA 3.0]}
+  \bibitem{cs137decay} {Wikipedia, the free encyclopedia. By Tubas-en [Public
+      domain], via Wikimedia Commons: \url{http://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Cs-137-decay.svg/500px-Cs-137-decay.svg.png}}
+\end{thebibliography}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
