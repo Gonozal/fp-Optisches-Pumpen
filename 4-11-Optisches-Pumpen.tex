@@ -18,6 +18,8 @@
 \usepackage{wrapfig}
 % Paket für amsmath (aligned mathe formeln)
 \usepackage{amsmath}
+% "definiert als" usw.
+\usepackage{mathtools}
 % Farbige tabellen
 \usepackage{colortbl}
  
@@ -129,10 +131,16 @@ Wir können den Rubidiumdampf als kanonisches Ensemble betrachten, d.h. als Syst
 $$N_j = N_0 \cdot g_j \cdot e^{- \beta E_j},$$
 wobei $\beta = \frac{1}{k_B T}$ die Energienormierung bezeichnet und $g_j$ den Entartungsgrad der Energie $E_j$, also die Anzahl der Zustände gleicher Energie $E_j$.
 
-Optisches Pumpen heißt, eine von dieser Statistik abweichende Besetzungsverteilung zu erzeugen. Um dies zu veranschaulichen, betrachten wir ein Energiesystem, das aus drei Niveaus besteht. C sei das höchste Niveau, B das mittlere und A das untere. Von den beiden Grundniveaus A und B seien optischen Übergänge zu C möglich, nicht aber zwischen A und B. Zu Beginn sind nun A und B gleichbesetzt, der Polarisationsgrad ist also: $P := \frac{N_B-N_A}{N_B+N_A} = \frac{N_B-N_A}{N} = 0$.
+Optisches Pumpen heißt, eine von dieser Statistik abweichende Besetzungsverteilung zu erzeugen. Um dies zu veranschaulichen, betrachten wir ein Energiesystem, das aus drei Niveaus besteht. C sei das höchste Niveau, B das mittlere und A das untere. Von den beiden Grundniveaus A und B seien optischen Übergänge zu C möglich, nicht aber zwischen A und B. Zu Beginn sind nun A und B gleichbesetzt, der Polarisationsgrad ist also: $P \coloneqq \frac{N_B-N_A}{N_B+N_A} = \frac{N_B-N_A}{N} = 0$.
+
+\begin{figure}[H] 
+  \centering
+     \includegraphics[width=0.5\textwidth]{img/Pumpen.jpg}
+     \caption{Prinzip des optisches Pumpens am 3-Niveau-System.}
+\end{figure}
 
 Nun wird derartiges Licht eingestrahlt, dass nur der Übergang von A nach C induziert wird, von C können Übergänge nach A oder B stattfinden, jedoch nicht von B nach C. Dies bedeutet, immer mehr Teilchen besetzen das Niveau B und immer weniger das Niveau A, da sie von dort kontunierlich nach C gepumpt werden. Dem entgegen wirkt die sogenannte Relaxation, d.h. der Übergang von B nach A. Hier sind zwar keine optischen Übergange möglich, jedoch können Teilchen durch magnetische Dipolübergänge oder durch Stöße dennoch von B nach A übergehen. Man definiert daher die Relaxationsrate wie folgt: 
-$$\frac{d n}{d t} \propto \frac{n}{T_1},~ n := N_B-N_A$$
+$$\frac{d n}{d t} \propto \frac{n}{T_1},~ n \coloneqq N_B-N_A$$
 mit der Relaxationszeit $T_1$. Es lässt sich sinnvollerweise auch eine Pumpzeit finden. Diese ist abhängig von der Intensität und von $N_A$. Für die Zunahme der Besetzung $N_B$ von B gilt:
 $$d N_B = - d N_A = -K \cdot I \cdot N_A \cdot d t,$$
 wobei K eine Proportionalitätskonstante ist. Daraus ergibt sich:
@@ -148,21 +156,46 @@ Beim Rubidiumdampf lässt sich der Erfolg des optischen Pumpens (d.h. der Pumpvo
 
 \section{Energieniveaustruktur von Rubidium}
 
+Das Rubidium-Atom besitzt ein s-Valenzelektron, d.h. der Grundzustand ist ein $^2S_{\frac{1}{2}}$-Zustand. Der Spin hat also die Quantenzahl $S = \frac{1}{2}$, der Bahndrehimpuls die Quantenzahl $L = 0$ und der Gesamtdrehimpuls $J = L + S = \frac{1}{2}$. Die Feinstrukturaufspaltung, die im Wesentlichen auf der L-S-Kopplung beruht, geschieht also erst ab dem ersten angeregten Zustand mit $L = 1$; der Gesamtdrehimpuls kann nun die Werte $\frac{1}{2}$ und $\frac{3}{2}$ annehmen. Zusätzlich gibt es die Hyperfeinstruktur, die eine Entartung aufgrund der verschiedenen Kopplungsmöglichkeiten des Kernspins $I$ und des Hüllendrehimpulses $J$ bezeichnet. Der Gesamtdrehimpuls $F = I + J$ kann alle ganzzahligen Werte zwischen $|J-I|$ und $|J+I|$ annehmen. Auf die resultierenden Hyperfeinstrukturniveaus wirkt der Zeeman-Effekt, falls ein äußeres Magnetfeld angelegt wird, entarten diese Niveaus also je nach Raumrichtung des Gesamtdrehimpulses und es gibt zusätzlich $2F$ Zeeman-Niveaus mit $m_F = -F, -F+1, ..., +F$. Folgende Termschemata zeigen dies in übersichtlicher Weise:
+
+\begin{figure}[H]
+\begin{subfigure}[c]{0.52\textwidth}
+
+\includegraphics[width=0.9\textwidth]{img/Rb-85.jpg}
+\subcaption{Termschema von $^{85}$Rb.}
+
+\end{subfigure}
+\begin{subfigure}[c]{0.52\textwidth}
+\includegraphics[width=0.9\textwidth]{img/Rb-87.jpg}
+\subcaption{Termschema von $^{87}$Rb.}
+\end{subfigure}
+\caption{Termschemata der verwendeten Isotope.}
+\end{figure}
+
+Betreffend die Übergänge zwischen den Niveaus gibt es folgende Auswahlregeln für elektronische Dipolübergänge (optische Übergänge): $\Delta J = 0, \pm 1,~ 0 \nleftrightarrow 0$, 
+$\Delta M_J = 0, \pm 1$ ($ 0\nleftrightarrow 0 $, falls $\Delta J = 0$),
+$\Delta L = \pm 1$.
+Das heißt, es sind keine elektronischen Dipolübergänge zwischen den Zeeman- und den Hyperfeinstrukturniveaus eines Feinstrukturniveaus möglich. Möglich sind hier jedoch magnetische Dipolübergänge, denn für diese gilt für die Bahndrehimpulsquantenzahl die Auswahlregel $\Delta L = 0$. Die übrigen Auswahlregeln gelten wie oben.
+
+Die Energien der Zeeman-Niveaus lassen sich mittels der Breit-Rabi-Formel berechnen, die für $J = \frac{1}{2}$ gilt und den Vorteil besitzt, dass sie sowohl für schwache Magnetfelder gültig ist, also für reinen Zeeman-Effekt, als auch für den Übergangsbereich zu starken Magnetfeldern (dann tritt der Paschen-Back-Effekt auf). Sei $\Delta E$ der Energieabstand der Hyperfeinstrukturniveaus, $g_I$ der g-Faktor des Kerns in Einheiten des Bohrschen Magnetons, $g_J$ der g-Faktor der Elektronenhülle, $\mu_B$ das Bohrsche Magneton und $B$ die magnetische Flussdichte, dann ist die Energie der Zeeman-Niveaus für $F = I \pm J$ gegeben durch:
+$$E(F,m_F) = - \frac{\Delta E}{2 (2I + 1)} + \mu_B g_I B m_F \pm \frac{\Delta E}{2} ( 1 + \frac{4 m_F}{2I+1} \xi + \xi^2 )^{\frac{1}{2}}$$
+mit $\xi = \frac{\mu_B (g_J - g_I)}{\Delta E} B.$
+
 \section{Spektroskopie der Zeeman-Niveaus nach optischem Pumpen}
+
+Pumpt man nun mit zirkular polarisiertem Licht, lassen sich Übergänge zwischen den Zeeman-Niveaus induzieren. Bei Bestrahlung mit $\sigma^+$-Pumplicht werden Übergänge innerhalb eines Hyperfeinstrukturniveaus von den negativen magnetischen Quantenzahlen $m_F$ zu den positiven induziert und bei Bestrahlung mit $\sigma^-$-Pumplicht reichern sich entsprechend die Zeeman-Niveaus mit negativen $mF$ an. Ändert man die Polarisation von $\sigma^+$ nach $\sigma^-$, werden Übergänge zwischen den Zeeman-Niveaus mit $\Delta m_F = -1$ ermöglicht, während sich die Transparenz des Rubidiumdampfes in Folge der Umbesetzung verändert.
+
+Im Gegensatz zur Bestrahlung mit $\sigma^-$-Pumplicht bewirkt die Einstrahlung eines linear polarisieren, magnetischen Wechselfeldes der richtigen Frequenz vermehrt Übergänge vom jeweils höheren Zeeman-Niveau zum nächst niederen Niveau. Die Frequenz dieser Übergänge ist nach Breit-Rabi: 
+
+$$f(m_F \leftrightarrow m_F-1) = \pm \frac{\mu_B g_I B}{h} + \frac{\Delta E}{2h} \left( ( 1 + \frac{4 m_F}{2I+1} \xi + \xi^2 )^{\frac{1}{2}} - ( 1 + \frac{4 (m_F - 1)}{2I+1} \xi + \xi^2 )^{\frac{1}{2}} \right).$$
 
 \section{Bestimmung des Kernspins}
 
-\chapter{Aufbau und Durchführung}
+Das Prinzip der Bestimmung des Kernspins ist folgendes: Mit einem magnetischen Hochfrequenzfeld werden magnetische Dipolübergänge zwischen benachbarten Zeeman-Niveaus im Grundzustand der Rubidium-Atome induziert und aus der so bestimmten Zeeman-Aufspaltung wird auf die Kernspins der beiden Isotope geschlossen. Im Resonanzfall gilt gerade $\Delta E = h \nu$ und da wir für die Zeeman-Energien bereits Formeln kennengelernt haben, die eine Abhängigkeit vom Kernspin und von der magnetischen Flussdichte aufweisen, müssen wir bei gegebener Frequenz des Magnetfeldes und gegebener Flussdichte lediglich noch nach $I$ umstellen. Ob Resonanz vorliegt, lässt sich wiederum über die Transparenz des Rubidiumdampfes feststellen. Durch Bestrahlung mit zirkular polarisiertem ($\sigma^-$-) Licht findet optisches Pumpen statt, d.h. die Zelle mit Rubidiumdampf wird transparent. Erfüllt das Magnetfeld, dessen Wirkung dem optischen Pumpen entgegengerichtet ist, nun die Resonanzbedingung, wird folglich die Zelle wieder weniger transparent. D.h. man kann nun entweder $B$ festhalten und die Frequenz variieren oder wahlweise die Frequenz festhalten und $B$ variieren, bis die Resonanzbedingung erfüllt ist. Relevant ist für die Berechnung noch die magnetische Flussdichte im Zentrum eines Helmholtz-Spulenpaares (Radius $R$, Windungszahl $N$) in Abhängigkeit des Spulenstroms $I$:
+$$B_Z = \frac{\mu_0 n \cdot I}{{\left( \frac{5}{4}\right)}^{1,5} R}$$
+mit der Vakuumpermeabilität $\mu_0 \coloneqq 4\,\pi \cdot 10^{-7} \frac{\mathrm{N}}{\mathrm{A}^2} = 12{,}566\,370\,614\ldots \cdot 10^{-7} \frac{\mathrm{N}}{\mathrm{A}^2}$.
 
-%\begin{figure}[H] 
- % \centering
-  %   \includegraphics[width=0.8\textwidth]{img/aufbau.png}
-   %  \caption{Experimental setup. As source material we used $^{22}Na$ and
-    %   $^{137}Cs$. In addition we mounted plates of aluminium, cadmium, iron and
-     %lead behind the source to measure the backscatter radiation. Finally we have
-  %   also measured the background radiation without a radiactive source \cite{Anleitung}.}
- % \label{fig:aufbau}
-%\end{figure}
+\chapter{Aufbau und Durchführung}
 
 \chapter{Auswertung}
 
