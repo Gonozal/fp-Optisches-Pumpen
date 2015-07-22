@@ -28,24 +28,20 @@
 % Paket zum Plotten von Datensätzen
 \usepackage{pgfplots}
 \pgfkeys{%
-  /pgfplots/seperators/.style={%
-    /pgf/number format/use comma
-  },
   /pgfplots/default/.style={%
     /pgf/number format/use comma,
     legend pos=north west,
-    x tick label style={/pgf/number format/1000 sep=},
-    y tick label style={/pgf/number format/1000 sep=},
     width=0.9\linewidth,
-    height=0.40\linewidth,
+    height=0.7\linewidth,
     scale only axis,
-    tick align=outside,
-    tickpos=left,
+    xmin=0,
+    ymin=0,
     grid=both,
     tick align=outside,
+    tickpos=left,
     minor x tick num=3,
-    minor y tick num=4,
-    minor grid style={dotted,thin}
+    minor y tick num=3,
+    minor grid style={dotted,thin},
   }
 }
 
@@ -229,43 +225,106 @@ Dabei bezeichnet
 
 \chapter{Auswertung}
 
-\section{Analysis of the spectrum of $^{137}Cs$}
+\section{Bestimmung der Pump- und Relaxationszeiten}
+\begin{figure}[h]
+\begin{tikzpicture}
+  \begin{axis}[
+    default,
+    title={Intensität des Pumplichts, ohne Graufilter},
+    legend pos=south east,
+    xlabel=t in s,
+    ylabel=U in V,
+    xmin=0,
+    xmax=0.24,
+    ymin=-0.14,
+    ymax=-0.02,
+    yticklabel style={/pgf/number format/fixed},
+    xticklabel style={/pgf/number format/fixed},
+    width=0.4\textwidth,
+    height=0.4\textwidth
+  ]
+  \addplot[black, only marks,mark=+, mark size=1pt] table[x index=0, y index=1] 
+  {data/processed/NoFilter-afterCut.txt};
+  \addlegendentry{Experimentelle Werte}
+
+  \addplot[white!60!black, only marks,mark=+, mark size=1pt] table[x index=0, y index=1] 
+  {data/processed/NoFilter-beforeCut.txt};
+  \addlegendentry{für Fit verwendete Werte}
+
+  \addplot[red, mark=x, mark size=0pt, samples=40, domain=0:0.24, thick]
+  {0.5*(-0.3511274620028062 + 0.2858601201009212*(1 - exp(-33.74639279261045*x)))};
+  \addlegendentry{Fit-Gerade}
+\end{axis}
+\end{tikzpicture}
+%
+\begin{tikzpicture}
+  \begin{axis}[
+    default,
+    title={Intensität des Pumplichts, mit Graufilter},
+    legend pos=south east,
+    xlabel=t in s,
+    ylabel=U in V,
+    xmin=0,
+    xmax=0.24,
+    ymin=0.235,
+    ymax=0.27,
+    yticklabel style={/pgf/number format/fixed},
+    xticklabel style={/pgf/number format/fixed},
+    width=0.4\textwidth,
+    height=0.4\textwidth
+  ]
+
+  \addplot[black, only marks,mark=+, mark size=1pt] table[x index=0, y index=1] 
+  {data/processed/WithFilter-afterCut.txt};
+  \addlegendentry{Experimentelle Werte}
+
+  \addplot[white!60!black, only marks,mark=+, mark size=1pt] table[x index=0, y index=1] 
+  {data/processed/WithFilter-beforeCut.txt};
+  \addlegendentry{für Fit verwendete Werte}
+
+  \addplot[red, mark=x, mark size=0pt, samples=40, domain=0:0.24, thick]
+  {0.5*(0.47299234320540423 + 0.055588524545789504*(1 - exp(-27.016294865042738*x)))};
+  \addlegendentry{Fit-Gerade}
+\end{axis}
+\end{tikzpicture}
+\captionof{figure}{Gemessene Intensität des Lichts nach Durchlaufen des
+  Rubidiums direkt nach Umpolung des Magnetfeldes. Da die Transparenz von
+  Rubidium für das Pumplicht sich während des Pumpvorganges ändert, ist diese
+  Proportional zur Besetzungszahl $N_A$. Insgesamt wurden zusammen 10 Messungen
+  für die Einstellung mit und ohne Graufilter aufgenommen.}
+\end{figure}
 
 
-\section{Fit Values}
+\section{Bestimmung des Kernspins von $^{87}Rb$}
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[H]{0.44\textwidth}
+        \includegraphics[width=1\textwidth]{img/2-1-plot1.png}
+    \end{subfigure}%
+    \qquad
+    ~%add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+        %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[H]{0.44\textwidth}
+        \includegraphics[width=1\textwidth]{img/2-1-plot2.png}
+    \end{subfigure}
+    \captionof{figure}{}
+\end{figure}
 
-%\begin{center}
- % \begin{tabular}{r|r|r|r|r|r|r}
-  %   Type of peak & $k$     & $\Delta k$ & $\mu$   & $\Delta \mu$ & $\sigma$ & $\Delta \sigma$ \\ \hline
-   %  X-ray        & $17066$ & $597$      & $90,7$  & $0,14$       & $3,69$   & $0,16$          \\ \hline
-    % Gamma        & $87052$ & $1285$     & $232,4$ & $0,11$       & $7,21$   & $0,14$          \\
-%	\end{tabular}
-%\end{center}
 
-\section{Energy spectrum}
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[H]{0.44\textwidth}
+        \includegraphics[width=1\textwidth]{img/2-1-plot3.png}
+    \end{subfigure}%
+    \qquad
+    ~%add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+        %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[H]{0.44\textwidth}
+        \includegraphics[width=1\textwidth]{img/2-1-plot4.png}
+    \end{subfigure}
+    \captionof{figure}{}
+\end{figure}
 
-\section{Background Radiation}
-
-%\begin{center}
-%\begin{figure}[H]
-%\begin{tikzpicture}
-%\begin{axis}[
-%    title={Background Radiation},
-%    xlabel=channel,
-%   ylabel=counts,
-%    height=0.7\textwidth,
-%    ymin=0,
-%    xmin=0,
-%    xmax=300,
-%    default
-%]
-%\addplot[red, only marks, mark=x, mark size=1pt] table[x index=0, y index=1] {data/background.txt};
-%\addlegendentry{Background}
-%\end{axis}
-%\end{tikzpicture}
-%\captionof{figure}{}
-%\end{figure}
-%\end{center}
 
 \chapter{Fazit}
 
