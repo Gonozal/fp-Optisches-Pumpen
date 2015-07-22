@@ -195,7 +195,37 @@ Das Prinzip der Bestimmung des Kernspins ist folgendes: Mit einem magnetischen H
 $$B_Z = \frac{\mu_0 n \cdot I}{{\left( \frac{5}{4}\right)}^{1,5} R}$$
 mit der Vakuumpermeabilität $\mu_0 \coloneqq 4\,\pi \cdot 10^{-7} \frac{\mathrm{N}}{\mathrm{A}^2} = 12{,}566\,370\,614\ldots \cdot 10^{-7} \frac{\mathrm{N}}{\mathrm{A}^2}$.
 
+Ebenfalls sollte Erwähnung finden, dass sich der Kernspin auch durch simples Abzählen der Zeeman-Niveaus ermitteln lässt, da bekanntermaßen die Zahl der Zeeman-Niveaus $2F$ beträgt und $F= I+J$, wobei $J$ bekannt ist.
+
 \chapter{Aufbau und Durchführung}
+
+Der Aufbau besteht im Wesentlichen aus der Absorptionskammer, welche mit Rubidium gefüllt ist, der Pumplichtquelle (Rubidium-Gasentladungslampe) sowie der Helmholtz-Spulenpaare für die Zeeman-Aufspaltung und zwei weitererer Spulen für das HF-Feld. Durch Vorwärmung mittels eines Kühlmittelumlaufsystems mit Thermostat wird die Temperatur der Absorptionskammer auf 55 $^{\circ}$C gehalten, wodurch das Rubidium verdampft. Desweiteren sind optische Komponenten für die Bereitstellung eines fokussierten zirkular polarisierten Lichtstrahls vonnöten. Die Intensität des transmittierten Lichtes wird mittels eines Silizium-Photodetektors gemessen. Im Folgenden ist der Aufbau schematisch dargestellt:
+
+\begin{figure}[H] 
+  \centering
+     \includegraphics[width=0.5\textwidth]{img/Aufbau.jpg}
+     \caption{Schematische Zeichnung des Versuchaufbaus \cite{Anleitung}.}
+\end{figure}
+
+Dabei bezeichnet
+
+1 die Pumplichtquelle,
+
+2, 6 und 8 Linsen zur Strahlformung,
+
+3 einen Farbfilter,
+
+4 einen linearen Polarisationsfilter,
+
+5 ein $\frac{\lambda}{4}$-Plättchen,
+
+7 die Helmholtz-Spulen für die Zeeman-Aufspaltung,
+
+9 den Photodetektor,
+
+10 die Absorptionskammer und
+
+11 die HF-Spulen.
 
 \chapter{Auswertung}
 
@@ -244,7 +274,8 @@ mit der Vakuumpermeabilität $\mu_0 \coloneqq 4\,\pi \cdot 10^{-7} \frac{\mathrm
 % Eintrag fürs Inhaltsverzeichnis
 \newpage
 \begin{thebibliography}{100}
-  \bibitem{Anleitung} {Experimental Instructions} \bibitem{na22decay} {Semibyte, homepage of physics lab assistent and qualified
+  \bibitem{Anleitung} {Anleitung zum Versuch, heruntergeladen am 15.07.2015 von der Homepage der TU-Darmstadt.} 
+  \bibitem{na22decay} {Semibyte, homepage of physics lab assistent and qualified
       computer scientist Tobias Krähling:
       \url{http://www.semibyte.de/wp/download/graphicslib/physics/termschema_na22.png}
     [CC BY-NC-SA 3.0]}
