@@ -132,7 +132,7 @@ Optisches Pumpen heißt, eine von dieser Statistik abweichende Besetzungsverteil
 \begin{figure}[H] 
   \centering
      \includegraphics[width=0.5\textwidth]{img/Pumpen.jpg}
-     \caption{Prinzip des optisches Pumpens am 3-Niveau-System.}
+     \caption{Prinzip des optisches Pumpens am 3-Niveau-System \cite{Anleitung}.}
 \end{figure}
 
 Nun wird derartiges Licht eingestrahlt, dass nur der Übergang von A nach C induziert wird, von C können Übergänge nach A oder B stattfinden, jedoch nicht von B nach C. Dies bedeutet, immer mehr Teilchen besetzen das Niveau B und immer weniger das Niveau A, da sie von dort kontunierlich nach C gepumpt werden. Dem entgegen wirkt die sogenannte Relaxation, d.h. der Übergang von B nach A. Hier sind zwar keine optischen Übergange möglich, jedoch können Teilchen durch magnetische Dipolübergänge oder durch Stöße dennoch von B nach A übergehen. Man definiert daher die Relaxationsrate wie folgt: 
@@ -233,8 +233,17 @@ Um die Pump- und Relaxationszeiten bestimmen zu können, muss nun das Pumpsignal
 Die nächsten Messungen dienen der Bestimmung des Kernspins. Wir erzeugen dazu mittels eines Funktionsgenerators eine Sinusspannung mit der Frequenz um 8 MHz, wo wir die Frequenzen der Zeeman-Übergänge im Grundzustand erwarten. Wir beginnen mit einem Bereich von etwa 7,5 bis 8,5 MHz und verringern die Bandbreite nach und nach, wenn das Absorptionssignal aufgefunden wurde. Der Polarisationsfilter steht dabei auf 0 $^{\circ}$ und das $\frac{\lambda}{4}$-Plättchen auf $\pm$45 $^{\circ}$. Das Oszilloskop wird nun auf Mittelung umgeschaltet und nach einigen Mittelungen, sobald das Signal deutlich erkennbar ist, wird die Messung durchgeführt, zuerst für $\sigma^+$-, dann für $\sigma^-$-Pumplicht. Sämtliche Daten werden auf einem USB-Stick gespeichert.
 
 \chapter{Auswertung}
-
 \section{Bestimmung der Pump- und Relaxationszeiten}
+Zur Bestimmung der Pump- und der Relaxationszeit vom verwendeten Rubidium fitten
+wir eine Exponentialfunktion der Form  $N_A(\tau) = \frac{1}{2} (N-n_0
+(1-e^{\frac{t}{\tau}}))$ an den exponentiell verlaufenden Bereich der gemessenen
+Intensität des Pumplichtes nach dem Umpolen des Magnetfeldes. Um daraus die
+gesuchten Werte für die Pump- und Abklingzeit bestimmen zu können, muss diese
+Messung mit unterschiedlichen Intensitäten des Pumplichts durchgeführt
+werden. Dadurch erhalten wir 2 Werte für $\tau$, was es uns Erlaubt mit Hilfe
+von $\frac{1}{\tau} = \frac{1}{T_P} + \frac{1}{T_1}$ sowohl $T_P$ als auch $T_1$
+zu bestimmen, da $T_P$ proportional zur Intensität des Pumplichtes ist.
+
 \begin{figure}[h]
 \begin{tikzpicture}
   \begin{axis}[
@@ -303,8 +312,61 @@ Die nächsten Messungen dienen der Bestimmung des Kernspins. Wir erzeugen dazu m
   für die Einstellung mit und ohne Graufilter aufgenommen.}
 \end{figure}
 
+Aus den Fits der Exponentialfunktionen erhalten wir folgende Werte
+\begin{figure}[h]
+  \centering
+  \begin{tabular}{l|lllll}
+    Fitparameter & Messung 1 & Messung 2 & Messung 3 & Messung 4 & Messung 5 \\ \hline
+    $n_0$        & -0,286    & -0,277    & -0,272    & -0,269    & -0,273    \\
+    $\tau$       & 0,0296    & 0,0304    & 0,0298    & 0,0299    & 0,0301    \\
+    $N$          & -0,351    & -0,344    & -0,334    & -0,330    & -0,344    \\
+  \end{tabular}
+  \caption{Fitparameter für die Messreihe der Intensität des Pumplichts ohne Graufilter}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \begin{tabular}{l|lllll}
+    Fitparameter & Messung 1 & Messung 2 & Messung 3 & Messung 4 & Messung 5 \\ \hline
+    $n_0$        & -0,0556   & -0,0607   & -0,0.0574 & -0,0538   & -0,0583   \\
+    $\tau$       & 0,0370    & 0,0278    & 0,0361    & 0,0375    & 0,0352    \\
+    $N$          & 0,472     & 0,472     & 0,495     & 0,514     & 0,510     \\
+  \end{tabular}
+  \caption{Fitparameter für die Messreihe der Intensität des Pumplichts mit Graufilter}
+\end{figure}
+
+Durch Mittelung über diese Werte erhalten 2 Werte für $\tau$, mit deren Hilfe
+wir die Pump- und Relaxationszeit bestimmen können. Außerdem erlaubt uns die
+Mittelung eine ungefähre Aussage über die Messunsicherheit, indem wir die
+Messung als statistichen Prozess ansehen und die Standardabweichung der
+Messwerte bilden.
+
+\begin{figure}[h]
+  \centering
+  \begin{tabular}{l|r@{$\pm$}l r@{$\pm$}l}
+        Fitparameter & \multicolumn{2}{c}{Ohne Graufilter} & \multicolumn{2}{c}{Mit Graufilter} \\ \hline
+    $n_0$        & -0,275                           & 0,007  & -0,057 & 0,003         \\
+    $\tau$       & 0,0300                           & 0.0003 & 0,0347 & 0.0040        \\
+    $N$          & -0,341                           & 0.009  & 0,493  & 0,020         \\
+  \end{tabular}
+  \caption{Mittelwerte und Unsicherheiten der Fitparameter für beide Messreihen}
+\end{figure}
+
+Lösen des Gleichungssystems für $T1$ und $T_P$ und ermitteln der
+Messunsicherheit mit Gauß'scher Fehlerfortpflanzung ergibt $T1=(0,0413 \pm
+0,0112)s$ und $T_P=(0,109 \pm 0,079)s$. Auffällig ist hier vor allem der
+erstaunlich große Fehler für $T_P$, der 72\% des Wertes entspricht.
 
 \section{Bestimmung des Kernspins von $^{87}Rb$ und $^{85}Rb$}
+Um den Kernspin der beiden Rubidium-Isotope $^{87}Rb$ und $^{85}Rb$ zu
+bestimmen, müssen wir nach einer Frequenzkalibrierung zuerst die
+Absorptionspeaks in den aufgenommenen Daten identifizieren. Auf Grund der
+geringen Breite und des kleinen Abstands der Peaks, war es uns nicht möglich,
+Gaußfunktionen an die peaks zu fitten. Statdessen haben wir die Absorptionspeaks
+optisch an hand des Graphen bestimmt, wodurch wir für jede Polarisationsrichtung
+4 bzw.\ 6 Peaks für $^{87}Rb$ und $^{85}Rb$ finden konnten.
+
+
 \begin{figure}[H]
     \centering
     \begin{subfigure}[H]{0.44\textwidth}
@@ -316,13 +378,12 @@ Die nächsten Messungen dienen der Bestimmung des Kernspins. Wir erzeugen dazu m
     \begin{subfigure}[H]{0.44\textwidth}
         \includegraphics[width=1\textwidth]{img/2-1-plot2.png}
     \end{subfigure}
-    \captionof{figure}{Absorptionspeaks von $^{85}Rb$ für $\sigma+$ und
+    \captionof{figure}{Absorptionspeaks von $^{87}Rb$ für $\sigma+$ und
       $\sigma-$ Pumplicht in Abhängigkeit der Frequenz des angelegten
       Magnetfeldes. Die vertikalen Linien markieren die Position der
       abgelesenen Werte. Insgesamt konnten wir 4 Absorptionspeaks
       identifizieren.}
 \end{figure}
-
 
 \begin{figure}[H]
     \centering
@@ -335,7 +396,7 @@ Die nächsten Messungen dienen der Bestimmung des Kernspins. Wir erzeugen dazu m
     \begin{subfigure}[H]{0.44\textwidth}
         \includegraphics[width=1\textwidth]{img/2-1-plot4.png}
     \end{subfigure}
-    \captionof{figure}{Absorptionspeaks von $^{87}Rb$ für $\sigma+$ und
+    \captionof{figure}{Absorptionspeaks von $^{85}Rb$ für $\sigma+$ und
       $\sigma-$ Pumplicht in Abhängigkeit der Frequenz des angelegten
       Magnetfeldes. Die vertikalen Linien markieren die Position der
       abgelesenen Werte. Insgesamt konnten wir 6 Absorptionspeaks
@@ -343,7 +404,69 @@ Die nächsten Messungen dienen der Bestimmung des Kernspins. Wir erzeugen dazu m
 \end{figure}
 
 
+\begin{table}[H]
+  \begin{center}
+  \def\arraystretch{1.25}
+  \begin{tabular}{c|c l|ll}
+      Isotop                      & Polarisation                  & I in mA                 & Frequenz in MHz   & theoretische Frequenz in MHz \\ \hline
+      \multirow{8}{*}{$^{87}Rb$}  & \multirow{4}{*}{$\sigma^{+}$} & \multirow{4}{*}{0,7282} & $8,170 \pm 0,004$ & 8,2298                       \\ 
+                                  &                               &                         & $8,189 \pm 0,004$ & 8,2497                       \\ 
+                                  &                               &                         & $8,210 \pm 0,004$ & 8,2697                       \\ 
+                                  &                               &                         & $8,228 \pm 0,004$ & 8,2899                       \\ \cline{2-5}
+                                  & \multirow{4}{*}{$\sigma^{-}$} & \multirow{4}{*}{0,7285} & $8,168 \pm 0,004$ & 8,2233                       \\ 
+                                  &                               &                         & $8,188 \pm 0,004$ & 8,2531                       \\ 
+                                  &                               &                         & $8,209 \pm 0,004$ & 8,2731                       \\ 
+                                  &                               &                         & $8,229 \pm 0,004$ & 8,2933                       \\ \hline
+      \multirow{12}{*}{$^{85}Rb$} & \multirow{6}{*}{$\sigma^{+}$} & \multirow{6}{*}{1,0826} & $8,044 \pm 0,004$ & 8,0905                       \\ 
+                                  &                               &                         & $8,088 \pm 0,004$ & 8,1333                       \\ 
+                                  &                               &                         & $8,131 \pm 0,004$ & 8,1769                       \\ 
+                                  &                               &                         & $8,175 \pm 0,004$ & 8,2212                       \\ 
+                                  &                               &                         & $8,219 \pm 0,004$ & 8,2662                       \\ 
+                                  &                               &                         & $8,266 \pm 0,004$ & 8,3119                       \\ \cline{2-5}
+                                  & \multirow{6}{*}{$\sigma^{-}$} & \multirow{6}{*}{1,0812} & $8,037 \pm 0,004$ & 8,0801                       \\ 
+                                  &                               &                         & $8,077 \pm 0,004$ & 8,1229                       \\ 
+                                  &                               &                         & $8,123 \pm 0,004$ & 8,1664                       \\ 
+                                  &                               &                         & $8,167 \pm 0,004$ & 8,2105                       \\ 
+                                  &                               &                         & $8,214 \pm 0,004$ & 8,2554                       \\ 
+                                  &                               &                         & $8,259 \pm 0,004$ & 8,3010                       \\ \hline
+    \end{tabular}
+    \caption{Lage der Absorptionspeaks für die verwendeten
+      Rubidiumisotope. Auffällig ist der beinahme konstante Offset zwischen
+      gemessenen und theoretischen Werten von etwa 0.05MHz.}
+  \end{center}
+\end{table}
+
+An Hand der Tabelle ist zu sehen, dass die gemessenen Frequenzen für die
+Energiedifferenzen der Zeeman-Niveaus gut reproduzieren. Lediglich eine
+Verschiebung der gemessenen Werte gegenüber den theoretischen Frequenzen von
+50kHz ist auffällig. Dies kann jedoch durch den Einfluss des Erdmagnetfeldes
+erklärt werden. Dieses ist zwar mit durchschnittlich $0.02mT$ bis $0.03mT$
+klein, reicht jedoch um eine Änderung in den gemessenen Frequenzen von bis zu
+150kHz zu bewirken. Die im Vergleich zum maximalen Einfluss des Erdmagnetfeldes
+kleinere Abweichung von den theoretischen Werten lässt sich durch eine
+Verdrehung des Aufbaus gegenüber dem Magnetfeld der Erde erklären.
+
+Durch Einsetzen der gemessenen Frequenzen in die Breit-Rabi-Formel lassen sich
+experimentelle Werte für den Spin der Rubidium-Isotope bestimmen. Wir erhalten
+für $^{85}Rb$ einen Wert von $2.516 \pm 0.001$ und für $^{87}Rb$ einen Wert von
+$1.516 \pm 0.0002$. Die geringe Abweichung von den Erwarteten Werten von 2.5
+bzw.\ 1.5 lassen sich durch den bereits angesprochenen Einfluss des
+Erdmagnetfeldes erklären, welches einen systematischen Fehler zu den
+Messergebnissen Beiträgt.
+
+
 \chapter{Fazit}
+In diesem Versuch gelang es uns erfolgreich, experimentell die Pump- und
+Abklingzeit von Rubidiumdampf zu bestimmen. Außerdem war es uns möglich, für die
+im Damp befindlichen Isotope $^{87}Rb$ und $^{85}Rb$ die Energien der
+Zeeman-Übergänge und aus denen den Kernspin des Rubidiums sehr genau zu bestimmen. Die
+genauigkeit der verwendeten Messmethode würde es sogar erlauben, experimentell
+die Stärke des Erdmagnetfeldes zu bestimmen.
+
+Außerdem wurde in diesem Versuch deutlich, dass optisches Pumpen nicht nur
+zum betrieben eines Lasers verwendet werden kann sondern das Erreichen einer
+Besetzungsinversion auch für die Messung schwacher Magnetfelder oder zur
+Bestimmung der Eigenschaften von Atomkernen benutzt werden kann.
 
 %ENDE INHALT
 \cleardoublepage{}
@@ -351,12 +474,6 @@ Die nächsten Messungen dienen der Bestimmung des Kernspins. Wir erzeugen dazu m
 \newpage
 \begin{thebibliography}{100}
   \bibitem{Anleitung} {Anleitung zum Versuch, heruntergeladen am 15.07.2015 von der Homepage der TU-Darmstadt.} 
-  \bibitem{na22decay} {Semibyte, homepage of physics lab assistent and qualified
-      computer scientist Tobias Krähling:
-      \url{http://www.semibyte.de/wp/download/graphicslib/physics/termschema_na22.png}
-    [CC BY-NC-SA 3.0]}
-  \bibitem{cs137decay} {Wikipedia, the free encyclopedia. By Tubas-en [Public
-      domain], via Wikimedia Commons: \url{http://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Cs-137-decay.svg/500px-Cs-137-decay.svg.png}}
 \end{thebibliography}
 \end{document}
 
