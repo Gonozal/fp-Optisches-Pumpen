@@ -117,7 +117,7 @@
 %ANFANG INHALT
 \chapter{Einleitung}
 
-In diesem Versuch geht es um optisches Pumpen, d.h. Erzeugung einer von der thermischen Besetzungsverteilung (Boltzmann-Verteilung) abweichenden Verteilung an Rubidiumatomen, womit man beispielsweise die sehr feine Zeeman-Aufspaltung der Hyperfeinstrukturniveaus spektroskopieren kann. Wir bestrahlen dazu Rubidiumdampf in einem Glaskolben mit einer Rubidiumlampe. Unter anderem wird auch der Kernspin von Rubidium $^{87}$Rb und $^{85}$Rb ermittelt.
+In diesem Versuch geht es um optisches Pumpen, d.h. Erzeugung einer von der thermischen Besetzungsverteilung (Boltzmann-Verteilung) abweichenden Besetzungsverteilung in Rubidiumatomen, womit man beispielsweise die sehr feine Zeeman-Aufspaltung der Hyperfeinstrukturniveaus spektroskopieren kann. Wir bestrahlen dazu Rubidiumdampf in einem Glaskolben mit einer Rubidiumlampe. Unter anderem wird auch der Kernspin von Rubidium $^{87}$Rb und $^{85}$Rb ermittelt.
 
 \chapter{Grundlagen}
 
@@ -135,15 +135,15 @@ Optisches Pumpen heißt, eine von dieser Statistik abweichende Besetzungsverteil
      \caption{Prinzip des optisches Pumpens am 3-Niveau-System \cite{Anleitung}.}
 \end{figure}
 
-Nun wird derartiges Licht eingestrahlt, dass nur der Übergang von A nach C induziert wird, von C können Übergänge nach A oder B stattfinden, jedoch nicht von B nach C. Dies bedeutet, immer mehr Teilchen besetzen das Niveau B und immer weniger das Niveau A, da sie von dort kontunierlich nach C gepumpt werden. Dem entgegen wirkt die sogenannte Relaxation, d.h. der Übergang von B nach A. Hier sind zwar keine optischen Übergange möglich, jedoch können Teilchen durch magnetische Dipolübergänge oder durch Stöße dennoch von B nach A übergehen. Man definiert daher die Relaxationsrate wie folgt: 
-$$\frac{d n}{d t} \propto \frac{n}{T_1},~ n \coloneqq N_B-N_A$$
-mit der Relaxationszeit $T_1$. Es lässt sich sinnvollerweise auch eine Pumpzeit finden. Diese ist abhängig von der Intensität und von $N_A$. Für die Zunahme der Besetzung $N_B$ von B gilt:
-$$d N_B = - d N_A = -K \cdot I \cdot N_A \cdot d t,$$
+Nun wird derartiges Licht eingestrahlt, dass nur der Übergang von A nach C induziert wird, von C können Übergänge nach A oder B stattfinden, jedoch nicht von B nach C. Dies bedeutet, immer mehr Teilchen besetzen das Niveau B und immer weniger das Niveau A, da sie von dort kontunierlich nach C gepumpt werden. Dem entgegen wirkt die sogenannte Relaxation, d.h. der Übergang von B nach A. Hier sind zwar keine optischen Übergange möglich, jedoch können Teilchen durch magnetische Dipolübergänge oder durch Stöße dennoch von B nach A und von A nach B übergehen. Man definiert daher die Relaxationsrate wie folgt: 
+$$\frac{d n}{d t} \propto - \frac{n}{T_1},~ n \coloneqq N_B-N_A$$
+mit der Relaxationszeit $T_1$. Es lässt sich auch eine Pumpzeit definieren. Diese ist abhängig von der Intensität und von $N_A$. Für die Zunahme der Besetzung $N_B$ von B gilt:
+$$d N_B = - d N_A = K \cdot I \cdot N_A \cdot d t,$$
 wobei K eine Proportionalitätskonstante ist. Daraus ergibt sich:
 $$d n = d (N_B-N_A) \propto -K \cdot I \cdot (N-n) \cdot d t,~ N_A = \frac{1}{2} (N-n).$$ 
 Die Pumpzeit ist damit $T_P = \frac{1}{K \cdot I}$ und $\frac{d n}{d t} \propto \frac{N-n}{T_P}$.
 
-Pumpen und Relaxation erfolgt gleichzeit, wir finden also folgende Differentialgleichung:
+Pumpen und Relaxation erfolgt gleichzeitig, wir finden also folgende Differentialgleichung:
 $$\frac{d n}{d t} = \frac{N-n}{T_P} - \frac{n}{T_1}$$
 und nach kurzer Zeit stellt sich ein Gleichgewicht ein, so dass gelten muss $\frac{d n}{d t} = 0$, woraus folgt: $n_0 = \frac{N}{1+\frac{T_P}{T_1}}$. Um die DGL zu lösen, setze $\frac{1}{\tau} = \frac{1}{T_P} + \frac{1}{T_1}$. Man erhält folgende Lösungen für $n$ und $N_A$:
 $$n = n_0 (1-e^{-\frac{t}{\tau}}),~~~ N_A = \frac{1}{2} (N-n_0 (1-e^{\frac{t}{\tau}})).$$
@@ -152,7 +152,7 @@ Beim Rubidiumdampf lässt sich der Erfolg des optischen Pumpens (d.h. der Pumpvo
 
 \section{Energieniveaustruktur von Rubidium}
 
-Das Rubidium-Atom besitzt ein s-Valenzelektron, d.h. der Grundzustand ist ein $^2S_{\frac{1}{2}}$-Zustand. Der Spin hat also die Quantenzahl $S = \frac{1}{2}$, der Bahndrehimpuls die Quantenzahl $L = 0$ und der Gesamtdrehimpuls $J = L + S = \frac{1}{2}$. Die Feinstrukturaufspaltung, die im Wesentlichen auf der L-S-Kopplung beruht, geschieht also erst ab dem ersten angeregten Zustand mit $L = 1$; der Gesamtdrehimpuls kann nun die Werte $\frac{1}{2}$ und $\frac{3}{2}$ annehmen. Zusätzlich gibt es die Hyperfeinstruktur, die eine Entartung aufgrund der verschiedenen Kopplungsmöglichkeiten des Kernspins $I$ und des Hüllendrehimpulses $J$ bezeichnet. Der Gesamtdrehimpuls $F = I + J$ kann alle ganzzahligen Werte zwischen $|J-I|$ und $|J+I|$ annehmen. Auf die resultierenden Hyperfeinstrukturniveaus wirkt der Zeeman-Effekt, falls ein äußeres Magnetfeld angelegt wird, entarten diese Niveaus also je nach Raumrichtung des Gesamtdrehimpulses und es gibt zusätzlich $2F$ Zeeman-Niveaus mit $m_F = -F, -F+1, ..., +F$. Folgende Termschemata zeigen dies in übersichtlicher Weise:
+Das Rubidium-Atom besitzt ein s-Valenzelektron, d.h. der Grundzustand ist ein $^2S_{\frac{1}{2}}$-Zustand. Der Spin hat also die Quantenzahl $S = \frac{1}{2}$, der Bahndrehimpuls die Quantenzahl $L = 0$ und der Gesamtdrehimpuls $J = L + S = \frac{1}{2}$. Die Feinstrukturaufspaltung, die im Wesentlichen auf der L-S-Kopplung beruht, geschieht also erst ab dem ersten angeregten Zustand mit $L = 1$; der Gesamtdrehimpuls kann nun die Werte $\frac{1}{2}$ und $\frac{3}{2}$ annehmen. Zusätzlich gibt es die Hyperfeinstruktur, die eine Entartung aufgrund der verschiedenen Kopplungsmöglichkeiten des Kernspins $I$ und des Hüllendrehimpulses $J$ bezeichnet. Der Gesamtdrehimpuls $F = I + J$ kann alle ganzzahligen Werte zwischen $|J-I|$ und $|J+I|$ annehmen. Auf die resultierenden Hyperfeinstrukturniveaus wirkt der Zeeman-Effekt, falls ein äußeres Magnetfeld angelegt wird, entarten diese Niveaus also je nach Raumrichtung des Gesamtdrehimpulses und es gibt zusätzlich $2F+1$ Zeeman-Niveaus mit $m_F = -F, -F+1, ..., +F$. Folgende Termschemata zeigen dies in übersichtlicher Weise:
 
 \begin{figure}[H]
 \begin{subfigure}[c]{0.52\textwidth}
@@ -173,7 +173,7 @@ $\Delta M_J = 0, \pm 1$ ($ 0\nleftrightarrow 0 $, falls $\Delta J = 0$),
 $\Delta L = \pm 1$.
 Das heißt, es sind keine elektronischen Dipolübergänge zwischen den Zeeman- und den Hyperfeinstrukturniveaus eines Feinstrukturniveaus möglich. Möglich sind hier jedoch magnetische Dipolübergänge, denn für diese gilt für die Bahndrehimpulsquantenzahl die Auswahlregel $\Delta L = 0$. Die übrigen Auswahlregeln gelten wie oben.
 
-Die Energien der Zeeman-Niveaus lassen sich mittels der Breit-Rabi-Formel berechnen, die für $J = \frac{1}{2}$ gilt und den Vorteil besitzt, dass sie sowohl für schwache Magnetfelder gültig ist, also für reinen Zeeman-Effekt, als auch für den Übergangsbereich zu starken Magnetfeldern (dann tritt der Paschen-Back-Effekt auf). Sei $\Delta E$ der Energieabstand der Hyperfeinstrukturniveaus, $g_I$ der g-Faktor des Kerns in Einheiten des Bohrschen Magnetons, $g_J$ der g-Faktor der Elektronenhülle, $\mu_B$ das Bohrsche Magneton und $B$ die magnetische Flussdichte, dann ist die Energie der Zeeman-Niveaus für $F = I \pm J$ gegeben durch:
+Die Energien der Zeeman-Niveaus lassen sich mittels der Breit-Rabi-Formel berechnen, die für $J = \frac{1}{2}$ gilt und den Vorteil besitzt, dass sie insbesondere für den Übergangsbereich von schwachen Magnetfeldern (also reinem Zeeman-Effekt) zu starken Magnetfeldern (dann tritt der Paschen-Back-Effekt auf) gültig ist. Sei $\Delta E$ der Energieabstand der Hyperfeinstrukturniveaus, $g_I$ der g-Faktor des Kerns in Einheiten des Bohrschen Magnetons, $g_J$ der g-Faktor der Elektronenhülle, $\mu_B$ das Bohrsche Magneton und $B$ die magnetische Flussdichte, dann ist die Energie der Zeeman-Niveaus für $F = I \pm J$ gegeben durch:
 $$E(F,m_F) = - \frac{\Delta E}{2 (2I + 1)} + \mu_B g_I B m_F \pm \frac{\Delta E}{2} ( 1 + \frac{4 m_F}{2I+1} \xi + \xi^2 )^{\frac{1}{2}}$$
 mit $\xi = \frac{\mu_B (g_J - g_I)}{\Delta E} B.$
 
@@ -181,9 +181,11 @@ mit $\xi = \frac{\mu_B (g_J - g_I)}{\Delta E} B.$
 
 Pumpt man nun mit zirkular polarisiertem Licht, lassen sich Übergänge zwischen den Zeeman-Niveaus induzieren. Bei Bestrahlung mit $\sigma^+$-Pumplicht werden Übergänge innerhalb eines Hyperfeinstrukturniveaus von den negativen magnetischen Quantenzahlen $m_F$ zu den positiven induziert und bei Bestrahlung mit $\sigma^-$-Pumplicht reichern sich entsprechend die Zeeman-Niveaus mit negativen $mF$ an. Ändert man die Polarisation von $\sigma^+$ nach $\sigma^-$, werden Übergänge zwischen den Zeeman-Niveaus mit $\Delta m_F = -1$ ermöglicht, während sich die Transparenz des Rubidiumdampfes in Folge der Umbesetzung verändert.
 
-Im Gegensatz zur Bestrahlung mit $\sigma^-$-Pumplicht bewirkt die Einstrahlung eines linear polarisieren, magnetischen Wechselfeldes der richtigen Frequenz vermehrt Übergänge vom jeweils höheren Zeeman-Niveau zum nächst niederen Niveau. Die Frequenz dieser Übergänge ist nach Breit-Rabi: 
+Im Gegensatz zur Bestrahlung mit $\sigma^+$-Pumplicht bewirkt die Einstrahlung eines linear polarisieren, magnetischen Wechselfeldes der richtigen Frequenz vermehrt Übergänge vom jeweils höheren Zeeman-Niveau zum nächst niederen Niveau. Die Frequenz dieser Übergänge ist nach Breit-Rabi: 
 
 $$f(m_F \leftrightarrow m_F-1) = \pm \frac{\mu_B g_I B}{h} + \frac{\Delta E}{2h} \left( ( 1 + \frac{4 m_F}{2I+1} \xi + \xi^2 )^{\frac{1}{2}} - ( 1 + \frac{4 (m_F - 1)}{2I+1} \xi + \xi^2 )^{\frac{1}{2}} \right).$$
+
+Das optische Pumpen ist für die Spektroskopie der Zeeman-Übergänge notwendig, da die Besetzungszahldifferenzen zwischen den Zeeman-Niveaus normalerweise verschwindend gering sind bzw. die Energieabstände sehr klein sind (Größenordnung $10^{-8}$ eV). Da wir durch optisches Pumpen eine von der thermischen Gleichgewichtsbesetzung stark abweichende Besetzung erzielen können (siehe Abschnitt 2.1), wird es nun möglich, die Abstände zwischen den Zeeman-Niveaus spektroskopisch aufzulösen. Durch Einstrahlung eines hochfrequenten magnetischen Wechselfeldes werden bei richtiger Wahl der Frequenz (nach obiger Formel für $f(m_F \leftrightarrow m_F-1)$) dem optischen Pumpen entgegengerichtete Übergänge induziert und die Transparenz des Rubidiumdampfes ändert sich wiederum. Auf diese Weise lassen sich also die Frequenzen der Zeeman-Übergänge feststellen.
 
 \section{Bestimmung des Kernspins}
 
@@ -191,7 +193,7 @@ Das Prinzip der Bestimmung des Kernspins ist folgendes: Mit einem magnetischen H
 $$B_Z = \frac{\mu_0 n \cdot I}{{\left( \frac{5}{4}\right)}^{1,5} R}$$
 mit der Vakuumpermeabilität $\mu_0 \coloneqq 4\,\pi \cdot 10^{-7} \frac{\mathrm{N}}{\mathrm{A}^2} = 12{,}566\,370\,614\ldots \cdot 10^{-7} \frac{\mathrm{N}}{\mathrm{A}^2}$.
 
-Ebenfalls sollte Erwähnung finden, dass sich der Kernspin auch durch simples Abzählen der Zeeman-Niveaus ermitteln lässt, da bekanntermaßen die Zahl der Zeeman-Niveaus $2F$ beträgt und $F= I+J$, wobei $J$ bekannt ist.
+Ebenfalls sollte Erwähnung finden, dass sich der Kernspin auch durch simples Abzählen der Zeeman-Niveaus ermitteln lässt, da bekanntermaßen die Zahl der Zeeman-Übergänge $2F$ beträgt, also $2F+1$ Zeeman-Niveaus existieren und $F= I+J$ gilt, wobei $J$ bekannt ist.
 
 \chapter{Aufbau und Durchführung}
 
@@ -338,7 +340,7 @@ Aus den Fits der Exponentialfunktionen erhalten wir folgende Werte
 Durch Mittelung über diese Werte erhalten 2 Werte für $\tau$, mit deren Hilfe
 wir die Pump- und Relaxationszeit bestimmen können. Außerdem erlaubt uns die
 Mittelung eine ungefähre Aussage über die Messunsicherheit, indem wir die
-Messung als statistichen Prozess ansehen und die Standardabweichung der
+Messung als statistischen Prozess ansehen und die Standardabweichung der
 Messwerte bilden.
 
 \begin{figure}[h]
@@ -362,8 +364,8 @@ Um den Kernspin der beiden Rubidium-Isotope $^{87}Rb$ und $^{85}Rb$ zu
 bestimmen, müssen wir nach einer Frequenzkalibrierung zuerst die
 Absorptionspeaks in den aufgenommenen Daten identifizieren. Auf Grund der
 geringen Breite und des kleinen Abstands der Peaks, war es uns nicht möglich,
-Gaußfunktionen an die peaks zu fitten. Statdessen haben wir die Absorptionspeaks
-optisch an hand des Graphen bestimmt, wodurch wir für jede Polarisationsrichtung
+Gaußfunktionen an die Peaks zu fitten. Stattdessen haben wir die Absorptionspeaks
+optisch anhand des Graphen bestimmt, wodurch wir für jede Polarisationsrichtung
 4 bzw.\ 6 Peaks für $^{87}Rb$ und $^{85}Rb$ finden konnten.
 
 
@@ -431,40 +433,40 @@ optisch an hand des Graphen bestimmt, wodurch wir für jede Polarisationsrichtun
                                   &                               &                         & $8,259 \pm 0,004$ & 8,3010                       \\ \hline
     \end{tabular}
     \caption{Lage der Absorptionspeaks für die verwendeten
-      Rubidiumisotope. Auffällig ist der beinahme konstante Offset zwischen
-      gemessenen und theoretischen Werten von etwa 0.05MHz.}
+      Rubidiumisotope. Auffällig ist der beinahe konstante Offset zwischen
+      gemessenen und theoretischen Werten von etwa 0,05 MHz.}
   \end{center}
 \end{table}
 
-An Hand der Tabelle ist zu sehen, dass die gemessenen Frequenzen für die
+Anhand der Tabelle ist zu sehen, dass die gemessenen Frequenzen für die
 Energiedifferenzen der Zeeman-Niveaus gut reproduzieren. Lediglich eine
 Verschiebung der gemessenen Werte gegenüber den theoretischen Frequenzen von
-50kHz ist auffällig. Dies kann jedoch durch den Einfluss des Erdmagnetfeldes
-erklärt werden. Dieses ist zwar mit durchschnittlich $0.02mT$ bis $0.03mT$
+50 kHz ist auffällig. Dies kann jedoch durch den Einfluss des Erdmagnetfeldes
+erklärt werden. Dieses ist zwar mit durchschnittlich $0,02mT$ bis $0,03mT$
 klein, reicht jedoch um eine Änderung in den gemessenen Frequenzen von bis zu
-150kHz zu bewirken. Die im Vergleich zum maximalen Einfluss des Erdmagnetfeldes
+150 kHz zu bewirken. Die im Vergleich zum maximalen Einfluss des Erdmagnetfeldes
 kleinere Abweichung von den theoretischen Werten lässt sich durch eine
 Verdrehung des Aufbaus gegenüber dem Magnetfeld der Erde erklären.
 
 Durch Einsetzen der gemessenen Frequenzen in die Breit-Rabi-Formel lassen sich
 experimentelle Werte für den Spin der Rubidium-Isotope bestimmen. Wir erhalten
 für $^{85}Rb$ einen Wert von $2.516 \pm 0.001$ und für $^{87}Rb$ einen Wert von
-$1.516 \pm 0.0002$. Die geringe Abweichung von den Erwarteten Werten von 2.5
-bzw.\ 1.5 lassen sich durch den bereits angesprochenen Einfluss des
+$1.516 \pm 0.0002$. Die geringe Abweichung von den Erwarteten Werten von 2,5
+bzw.\ 1,5 lassen sich durch den bereits angesprochenen Einfluss des
 Erdmagnetfeldes erklären, welches einen systematischen Fehler zu den
-Messergebnissen Beiträgt.
+Messergebnissen beiträgt.
 
 
 \chapter{Fazit}
 In diesem Versuch gelang es uns erfolgreich, experimentell die Pump- und
 Abklingzeit von Rubidiumdampf zu bestimmen. Außerdem war es uns möglich, für die
-im Damp befindlichen Isotope $^{87}Rb$ und $^{85}Rb$ die Energien der
+im Dampf befindlichen Isotope $^{87}Rb$ und $^{85}Rb$ die Energien der
 Zeeman-Übergänge und aus denen den Kernspin des Rubidiums sehr genau zu bestimmen. Die
-genauigkeit der verwendeten Messmethode würde es sogar erlauben, experimentell
+Genauigkeit der verwendeten Messmethode würde es sogar erlauben, experimentell
 die Stärke des Erdmagnetfeldes zu bestimmen.
 
 Außerdem wurde in diesem Versuch deutlich, dass optisches Pumpen nicht nur
-zum betrieben eines Lasers verwendet werden kann sondern das Erreichen einer
+zum Betreiben eines Lasers verwendet werden kann, sondern das Erreichen einer
 Besetzungsinversion auch für die Messung schwacher Magnetfelder oder zur
 Bestimmung der Eigenschaften von Atomkernen benutzt werden kann.
 
